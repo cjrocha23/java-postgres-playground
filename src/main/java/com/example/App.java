@@ -10,7 +10,21 @@ public class App {
     private static final String JDBC_URL = "jdbc:postgresql://localhost/postgres";
 
     public static void main(String[] args) {
-        new App();
+        //new App();
+
+        // TESTES AULAS:
+        System.out.println("### Aplicações JAVA ###");
+        var idade = 55;
+        var peso = 80;
+        System.out.println("Idade: " + idade + ".");
+        System.out.println("Peso: " + peso + ".");
+        var sexo = "M";
+        if (sexo == "M") {
+            System.out.println("Sexo: Masculino.");
+        }
+        else {
+            System.out.println("Sexo: Feminino.");
+        }
     }
 
     public App(){
