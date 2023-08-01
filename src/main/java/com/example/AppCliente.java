@@ -6,6 +6,15 @@ public class AppCliente {
     private char sexo;
     private int anoNascimento;
     private String cpf;
+    
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
     private boolean especial = true;
 
     public AppCliente() {
