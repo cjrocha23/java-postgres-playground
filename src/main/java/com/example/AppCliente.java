@@ -1,10 +1,11 @@
 package com.example;
 
 public class AppCliente {
-    String nome;
-    double renda;
-    char sexo;
-    int anoNascimento;
+    private String nome;
+    private double renda;
+    private char sexo;
+    private int anoNascimento;
+    private String cpf;
     private boolean especial = true;
 
     public AppCliente() {
