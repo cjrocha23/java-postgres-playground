@@ -5,6 +5,29 @@ public class AppCliente {
     double renda;
     char sexo;
     int anoNascimento;
+    private boolean especial = true;
+
+    public AppCliente() {
+        // Método usado apenas para mensagem.
+        System.out.println("Criando cliente cliente.");
+    }
+
+    public AppCliente(String nome, double renda, char sexo, int anoNascimento) {
+        this();
+        this.nome = nome;
+        //this.renda = renda;
+        setRenda(renda);
+        this.sexo = sexo;
+        this.anoNascimento = anoNascimento;
+    }
+
+    public boolean isEspecial() {
+        return especial;
+    }
+
+    public void setEspecial(boolean especial) {
+        this.especial = especial;
+    }
 
     public String getNome() {
         return nome;
@@ -22,7 +45,7 @@ public class AppCliente {
         if (renda >= 0)
             this.renda = renda;
         else
-            System.out.println("A renda deve ser maior que zero.");
+            System.out.println("A renda deve ser maior ou igual a zero.");
     }
 
     public char getSexo() {
