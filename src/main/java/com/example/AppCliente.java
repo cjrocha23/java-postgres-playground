@@ -75,5 +75,9 @@ public class AppCliente {
     
     public void setAnoNascimento(int anoNascimento) {
         this.anoNascimento = anoNascimento;
-    }    
+    }
+
+    public String toString() {
+        return "Nome Cliente: " + nome;
+    }
 }
