@@ -1,10 +1,15 @@
 package com.example;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class AppBancoDadosV3Final {
+    private static final String JDBC_PWD = "";
+    private static final String JDBC_USR = "gitpod";
+    private static final String JDBC_URL = "jdbc:postgresql://localhost/postgres";
+
     public static void main(String[] args) {
         // Verão com melhorias nos tratamentos de erro.
         System.out.println();
@@ -18,9 +23,7 @@ public class AppBancoDadosV3Final {
         carregarDriverJdbc();
 
         Statement statement = null;
-        //String stringRes = "Id: %d Nome: %s UF: %s\n", resultado.getI;
-
-        try (var conexao = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "gitpod", "")) {
+        try (var conexao = getConnection()) {
             System.out.println("Conexão com o Banco de Dados realizada com sucesso.");
 
             statement = conexao.createStatement();
@@ -37,6 +40,10 @@ public class AppBancoDadosV3Final {
                 System.err.println("Não foi possível executar a consulta com o Banco de Dados: \n" + e.getMessage());
             }
         }
+    }
+
+    private static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(JDBC_URL, JDBC_USR, JDBC_PWD);
     }
 
     private static void carregarDriverJdbc() {
