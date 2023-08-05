@@ -4,18 +4,18 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class AppBancoDadosV3 {
+public class AppBancoDadosV3Final {
     public static void main(String[] args) {
         // Verão com melhorias nos tratamentos de erro.
         System.out.println();
-        System.out.println("### Banco de Dados JAVA. ###");
+        System.out.println("### Banco de Dados JAVA - Final. ###");
         System.out.println();
+        listarEstados();
+        System.out.println();
+    }
 
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            System.err.println("Não foi possível carregar a bibliotgeca para acesso ao banco de dados: " + e.getMessage());
-        }
+    private static void listarEstados() {
+        carregarDriverJdbc();
 
         Statement statement = null;
         //String stringRes = "Id: %d Nome: %s UF: %s\n", resultado.getI;
@@ -36,6 +36,14 @@ public class AppBancoDadosV3 {
             } else {
                 System.err.println("Não foi possível executar a consulta com o Banco de Dados: \n" + e.getMessage());
             }
-        }        
+        }
+    }
+
+    private static void carregarDriverJdbc() {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            System.err.println("Não foi possível carregar a bibliotgeca para acesso ao banco de dados: " + e.getMessage());
+        }
     }
 }
