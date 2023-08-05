@@ -3,7 +3,6 @@ package com.example;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class AppBancoDadosV3Final {
     private static final String JDBC_PWD = "";
@@ -22,9 +21,9 @@ public class AppBancoDadosV3Final {
 
     public AppBancoDadosV3Final() {
         try (var conexao = getConnection()) {
-            carregarDriverJdbc();
-            listarEstados(conexao);
-            localizarEstado(conexao, "TO");
+            //carregarDriverJdbc();
+            //listarEstados(conexao);
+            localizarEstado(conexao, "MG");
         } catch (SQLException e) {
             System.err.println("Não foi possível conectar com o Banco de Dados: \n" + e.getMessage());
         }
@@ -32,7 +31,22 @@ public class AppBancoDadosV3Final {
     }
 
     private void localizarEstado(Connection conexao, String uf) {
-        
+        try {
+            // Suncetível ao ataque de SQL Injection.
+            // var resultado = statement.executeQuery("SELECT * FROM estado WHERE uf = '"+ uf +"'");
+            var sql = "SELECT * FROM estado WHERE uf = ?";
+            var statement = conexao.prepareStatement(sql);
+            System.out.println("Resultado da Consulta SQL: '" + sql + "'");
+            statement.setString(1, uf);
+            var resultado = statement.executeQuery();
+
+            while (resultado.next()) {
+                System.out.printf("Id: %d - Nome: %s - UF: %s \n", resultado.getInt("id"), resultado.getString("nome"), resultado.getString("uf"));
+            }            
+
+        } catch (Exception e) {
+            System.err.println("Erro ao executar a consulta SQL: \n" + e.getMessage());
+        }
     }
 
     private void listarEstados(Connection conexao) {
