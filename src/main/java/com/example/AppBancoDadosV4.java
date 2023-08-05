@@ -4,12 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class AppBancoDadosV4 {
-    private static final String JDBC_PWD = "";
-    private static final String JDBC_USR = "gitpod";
-    private static final String JDBC_URL = "jdbc:postgresql://localhost/postgres";
-    //private Connection conexao;
+import com.example.Model.Marca;
+import com.example.Model.Produto;
+import com.example.dao.ConnectionManager;
 
+public class AppBancoDadosV4 {
     public static void main(String[] args) {
         // Verão refatorada.
         System.out.println();
@@ -20,15 +19,15 @@ public class AppBancoDadosV4 {
     }
 
     public AppBancoDadosV4() {
-        try (var conexao = getConnection()) {
+        try (var conexao = ConnectionManager.getConnection()) {
             //carregarDriverJdbc();
             //listarEstados(conexao);
             //localizarEstado(conexao, "MG");
             //listarDadosTabela(conexao, "produto");
             
-            var marca = new AppMarca();
+            var marca = new Marca();
             marca.setId(1L);
-            var produto = new AppProduto();
+            var produto = new Produto();
             produto.setMarca(marca);
             produto.setNome("Produto 4");
             produto.setValor(400.00);
@@ -59,7 +58,7 @@ public class AppBancoDadosV4 {
         }
     }
 
-    private void inserirProduto(Connection conexao, AppProduto produto) {
+    private void inserirProduto(Connection conexao, Produto produto) {
         var sql = "INSERT INTO produto (nome, marca_id, valor) values (?, ?, ?)";
         try (var statement = conexao.prepareStatement(sql)) {
             statement.setString(1, produto.getNome());
@@ -99,44 +98,11 @@ public class AppBancoDadosV4 {
         }
     }
 
-    private void localizarEstado(Connection conexao, String uf) {
-        try {
-            // Suncetível ao ataque de SQL Injection.
-            // var resultado = statement.executeQuery("SELECT * FROM estado WHERE uf = '"+ uf +"'");
-            var sql = "SELECT * FROM estado WHERE uf = ?";
-            var statement = conexao.prepareStatement(sql);
-            System.out.println("Resultado da Consulta SQL: '" + sql + "'");
-            statement.setString(1, uf);
-            var resultado = statement.executeQuery();
-
-            while (resultado.next()) {
-                System.out.printf("Id: %d - Nome: %s - UF: %s \n", resultado.getInt("id"), resultado.getString("nome"), resultado.getString("uf"));
-            }            
-
-        } catch (Exception e) {
-            System.err.println("Erro ao executar a consulta SQL: \n" + e.getMessage());
-        }
-    }
-
-    private void listarEstados(Connection conexao) {
-        try {
-            System.out.println("Conexão com o Banco de Dados realizada com sucesso.");
-
-            var statement = conexao.createStatement();
-            var resultado = statement.executeQuery("SELECT * FROM estado");
-
-            while (resultado.next()) {
-                System.out.printf("Id: %d - Nome: %s - UF: %s \n", resultado.getInt("id"), resultado.getString("nome"), resultado.getString("uf"));
-            }
-
-        } catch (SQLException e) {
-                System.err.println("Não foi possível executar a consulta com o Banco de Dados: \n" + e.getMessage());
-        }
-    }
-
+    /* Movido para DAO.
     private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(JDBC_URL, JDBC_USR, JDBC_PWD);
+        return DriverManager.getConnection(ConnectionManager.JDBC_URL, ConnectionManager.JDBC_USR, ConnectionManager.JDBC_PWD);
     }
+    */
 
     /* Declaração do JDBC desnecessário.
     private void carregarDriverJdbc() {

@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.Model.Cliente;
+
 public class AppOperadoresRelacionais {
     public static void main(String[] args) {
 
@@ -7,10 +9,10 @@ public class AppOperadoresRelacionais {
         System.out.println("### Operadores Relacionais JAVA. ###");
         System.out.println();
         
-        var cliente1 = new AppCliente();
+        var cliente1 = new Cliente();
         cliente1.setAnoNascimento(1980);
 
-        var cliente2 = new AppCliente();
+        var cliente2 = new Cliente();
         cliente2.setAnoNascimento(2010);
 
         // Exemplo 1

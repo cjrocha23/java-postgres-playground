@@ -1,10 +1,9 @@
-package com.example;
+package com.example.Model;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
-public class AppCidadao {
+public class Cidadao {
     String nome;
     String dataNascimento;
     String idade;

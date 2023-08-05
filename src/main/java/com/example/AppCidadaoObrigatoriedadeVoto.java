@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.Model.Cidadao;
+
 public class AppCidadaoObrigatoriedadeVoto {
         /*
             Obrigatoriedade de Voto:
@@ -17,7 +19,7 @@ public class AppCidadaoObrigatoriedadeVoto {
         */
 
     public static void main(String[] args) {
-        AppCidadao cidadao = new AppCidadao();
+        Cidadao cidadao = new Cidadao();
         cidadao.setNome("Cláudio");
         cidadao.setDataNascimento("1967-11-23");
         System.out.println("Nome...........: " + cidadao.getNome());

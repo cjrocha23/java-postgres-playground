@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.Model.Cliente;
+
 public class AppClasses {
     public static void main(String[] args) {
         
@@ -8,7 +10,7 @@ public class AppClasses {
         System.out.println();
 
         System.out.println("Cliente 1");
-        AppCliente cliente1 = new AppCliente();
+        Cliente cliente1 = new Cliente();
         cliente1.setNome("Cláudio");
         cliente1.setRenda(2000);
         cliente1.setSexo('M');
@@ -22,7 +24,7 @@ public class AppClasses {
 
         System.out.println();
         System.out.println("Cliente 2");
-        AppCliente cliente2 = new AppCliente("Mariah", 3000, 'F', 1970);
+        Cliente cliente2 = new Cliente("Mariah", 3000, 'F', 1970);
         //cliente2.setNome("Mariah");
         //cliente2.setRenda(3000);
         //cliente2.setSexo('F');

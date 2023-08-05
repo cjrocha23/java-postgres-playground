@@ -1,6 +1,6 @@
-package com.example;
+package com.example.Model;
 
-public class AppMarca {
+public class Marca {
    private Long id;
    public Long getId() {
     return id;

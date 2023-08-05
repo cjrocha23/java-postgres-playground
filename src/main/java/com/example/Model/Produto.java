@@ -1,6 +1,6 @@
-package com.example;
+package com.example.Model;
 
-public class AppProduto {
+public class Produto {
     private Long id;
     private String nome;
     private double valor;
@@ -29,14 +29,14 @@ public class AppProduto {
         this.nome = nome;
     }
     
-    public AppMarca getMarca() {
+    public Marca getMarca() {
         return marca;
     }
     
-    public void setMarca(AppMarca marca) {
+    public void setMarca(Marca marca) {
         this.marca = marca;
     }
     
-    private AppMarca marca;
+    private Marca marca;
     
 }

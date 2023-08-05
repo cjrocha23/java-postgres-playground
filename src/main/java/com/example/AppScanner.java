@@ -2,9 +2,11 @@ package com.example;
 
 import java.util.Scanner;
 
+import com.example.Model.Cliente;
+
 public class AppScanner {
     public static void main(String[] args) {
-        AppCliente appCliente = new AppCliente();
+        Cliente appCliente = new Cliente();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Dados do Cliente");
         System.out.println("================");

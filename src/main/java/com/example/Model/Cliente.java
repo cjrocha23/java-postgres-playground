@@ -1,6 +1,6 @@
-package com.example;
+package com.example.Model;
 
-public class AppCliente {
+public class Cliente {
     private String nome;
     private double renda;
     private char sexo;
@@ -17,12 +17,12 @@ public class AppCliente {
 
     private boolean especial = true;
 
-    public AppCliente() {
+    public Cliente() {
         // Método usado apenas para mensagem.
         System.out.println("Criando cliente cliente.");
     }
 
-    public AppCliente(String nome, double renda, char sexo, int anoNascimento) {
+    public Cliente(String nome, double renda, char sexo, int anoNascimento) {
         this();
         this.nome = nome;
         //this.renda = renda;

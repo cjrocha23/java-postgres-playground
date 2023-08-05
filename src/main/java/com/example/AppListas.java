@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.example.Model.Cliente;
+
 public class AppListas {
     // Listas possuem capacidade serem aumentadas à medida que inserções são realizadas.
     public static void main(String[] args) {
@@ -21,19 +23,19 @@ public class AppListas {
         // Ex. para 10 elementos:
         // List<AppCliente> listaClientes = new ArrayList<>(10);
         // Caso não seja sabido o númeto de elementos, pode-se usar o LinkedList:
-        List<AppCliente> listaClientes = new LinkedList<>();
+        List<Cliente> listaClientes = new LinkedList<>();
         // O LinkedList vai reservando memória à medida que os elementos sejam inseridos.
 
-        var cliente1 = new AppCliente();
+        var cliente1 = new Cliente();
         cliente1.setNome("Cláudio");
 
-        var cliente2 = new AppCliente();
+        var cliente2 = new Cliente();
         cliente2.setNome("Rocha");
         
         listaClientes.add(cliente1);
         listaClientes.add(cliente2);
         
-        for (AppCliente cliente : listaClientes) {
+        for (Cliente cliente : listaClientes) {
             System.out.println(cliente);
         }
 
