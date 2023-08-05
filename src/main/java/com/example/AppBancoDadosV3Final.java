@@ -9,24 +9,37 @@ public class AppBancoDadosV3Final {
     private static final String JDBC_PWD = "";
     private static final String JDBC_USR = "gitpod";
     private static final String JDBC_URL = "jdbc:postgresql://localhost/postgres";
+    private Connection conexao;
 
     public static void main(String[] args) {
-        // Verão com melhorias nos tratamentos de erro.
+        // Verão refatorada.
         System.out.println();
         System.out.println("### Banco de Dados JAVA - Final. ###");
         System.out.println();
-        listarEstados();
+        new AppBancoDadosV3Final();
         System.out.println();
     }
 
-    private static void listarEstados() {
-        carregarDriverJdbc();
-
-        Statement statement = null;
+    public AppBancoDadosV3Final() {
         try (var conexao = getConnection()) {
+            carregarDriverJdbc();
+            listarEstados(conexao);
+            localizarEstado(conexao, "TO");
+        } catch (SQLException e) {
+            System.err.println("Não foi possível conectar com o Banco de Dados: \n" + e.getMessage());
+        }
+
+    }
+
+    private void localizarEstado(Connection conexao, String uf) {
+        
+    }
+
+    private void listarEstados(Connection conexao) {
+        try {
             System.out.println("Conexão com o Banco de Dados realizada com sucesso.");
 
-            statement = conexao.createStatement();
+            var statement = conexao.createStatement();
             var resultado = statement.executeQuery("SELECT * FROM estado");
 
             while (resultado.next()) {
@@ -34,19 +47,15 @@ public class AppBancoDadosV3Final {
             }
 
         } catch (SQLException e) {
-            if (statement == null) {
-                System.err.println("Não foi possível conectar com o Banco de Dados: \n" + e.getMessage());
-            } else {
                 System.err.println("Não foi possível executar a consulta com o Banco de Dados: \n" + e.getMessage());
-            }
         }
     }
 
-    private static Connection getConnection() throws SQLException {
+    private Connection getConnection() throws SQLException {
         return DriverManager.getConnection(JDBC_URL, JDBC_USR, JDBC_PWD);
     }
 
-    private static void carregarDriverJdbc() {
+    private void carregarDriverJdbc() {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
