@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class AppBancoDadosV3Final {
+public class AppBancoDadosV3 {
     private static final String JDBC_PWD = "";
     private static final String JDBC_USR = "gitpod";
     private static final String JDBC_URL = "jdbc:postgresql://localhost/postgres";
@@ -15,11 +15,11 @@ public class AppBancoDadosV3Final {
         System.out.println();
         System.out.println("### Banco de Dados JAVA - Final. ###");
         System.out.println();
-        new AppBancoDadosV3Final();
+        new AppBancoDadosV3();
         System.out.println();
     }
 
-    public AppBancoDadosV3Final() {
+    public AppBancoDadosV3() {
         try (var conexao = getConnection()) {
             //carregarDriverJdbc();
             //listarEstados(conexao);
