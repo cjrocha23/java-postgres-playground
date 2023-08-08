@@ -7,9 +7,9 @@ import java.sql.Statement;
 public class AppBancoDadosV2 {
     public static void main(String[] args) {
         // Verão com melhorias nos tratamentos de erro.
-        System.out.println();
-        System.out.println("### Banco de Dados JAVA. ###");
-        System.out.println();
+        //System.out.println();
+        //System.out.println("### Banco de Dados JAVA. ###");
+        //System.out.println();
 
         try {
             Class.forName("org.postgresql.Driver");

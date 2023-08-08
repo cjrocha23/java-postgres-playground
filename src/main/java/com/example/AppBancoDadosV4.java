@@ -10,11 +10,11 @@ import com.example.dao.ConnectionManager;
 public class AppBancoDadosV4 {
     public static void main(String[] args) {
         // Verão refatorada.
-        System.out.println();
-        System.out.println("### Banco de Dados JAVA - Final. ###");
-        System.out.println();
-        new AppBancoDadosV4();
-        System.out.println();
+        //System.out.println();
+        //System.out.println("### Banco de Dados JAVA - Final. ###");
+        //System.out.println();
+        //new AppBancoDadosV4();
+        //System.out.println();
     }
 
     public AppBancoDadosV4() {
@@ -31,9 +31,7 @@ public class AppBancoDadosV4 {
             produto.setNome("Produto 4");
             produto.setValor(400.00);
             //inserirProduto(conexao, produto);
-            
-            excluirProduto(conexao, 203);
-
+            //excluirProduto(conexao, 203);
             //listarDadosTabela(conexao, "produto");
             
         } catch (SQLException e) {

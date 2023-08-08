@@ -6,9 +6,9 @@ import java.sql.SQLException;
 public class AppBancoDadosV1 {
     public static void main(String[] args) {
 
-        System.out.println();
-        System.out.println("### Banco de Dados JAVA. ###");
-        System.out.println();
+        //System.out.println();
+        //System.out.println("### Banco de Dados JAVA. ###");
+        //System.out.println();
         
         try {
             Class.forName("org.postgresql.Driver");

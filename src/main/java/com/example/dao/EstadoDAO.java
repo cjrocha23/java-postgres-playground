@@ -2,29 +2,33 @@ package com.example.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
-public class EstadoDAO {
-    private Connection conexao;
+import com.example.Model.Estado;
+
+public class EstadoDAO extends GenericoDAO {
 
     public EstadoDAO(Connection conexao) {
-        this.conexao = conexao;
+        //this.conexao = conexao;
+        super(conexao);
     }
 
-    public void listar() {
-        try {
-            var statement = conexao.createStatement();
-            var resultado = statement.executeQuery("SELECT * FROM estado");
-
-            while (resultado.next()) {
-                System.out.printf("Id: %d - Nome: %s - UF: %s \n", resultado.getInt("id"), resultado.getString("nome"), resultado.getString("uf"));
-            }
-
-        } catch (SQLException e) {
-                System.err.println("Não foi possível executar a consulta com o Banco de Dados: \n" + e.getMessage());
+    public List<Estado> listar() throws SQLException {
+        var lista = new LinkedList<Estado>();
+        var statement = conexao.createStatement();
+        var resultado = statement.executeQuery("SELECT * FROM estado");
+        while (resultado.next()) {
+            var estado = new Estado();
+            estado.setId(resultado.getInt("id"));
+            estado.setNome(resultado.getString("nome"));
+            estado.setUf(resultado.getString("uf"));
         }
+
+        return lista;
     }
 
-    public void localizar(Connection conexao, String uf) {
+    public void localizar(String uf) {
         try {
             // Suncetível ao ataque de SQL Injection.
             // var resultado = statement.executeQuery("SELECT * FROM estado WHERE uf = '"+ uf +"'");
